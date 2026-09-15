@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- High-res export engines -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -26,6 +26,7 @@
       --gold-border: rgba(212, 175, 55, 0.5);
       
       --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-luxury: 'Cinzel', serif;
       --font-sans: 'Plus Jakarta Sans', sans-serif;
     }
 
@@ -136,32 +137,34 @@
     }
 
     .brand-title-main {
-      font-family: var(--font-serif);
-      font-size: 2.1rem;
+      font-family: var(--font-luxury);
+      font-size: 1.95rem;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       line-height: 1.05;
     }
 
     .brand-subtitle-main {
-      font-size: 0.58rem;
+      font-family: var(--font-luxury);
+      font-size: 0.55rem;
       letter-spacing: 0.38em;
       text-transform: uppercase;
       color: #94a3b8;
     }
 
     .services-tag {
-      font-family: var(--font-serif);
-      font-size: 1.2rem;
+      font-family: var(--font-luxury);
+      font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       margin: 0.15rem 0;
     }
 
     .services-subtag {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-family: var(--font-luxury);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
       color: #d4af37;
       text-transform: uppercase;
     }
@@ -170,9 +173,9 @@
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       color: #e2e8f0;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
     }
 
     .contact-row {
@@ -223,24 +226,25 @@
     }
 
     .person-name {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
+      font-family: var(--font-luxury);
+      font-size: 1.3rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       line-height: 1.1;
     }
 
     .person-phone {
-      font-family: var(--font-serif);
-      font-size: 1.1rem;
+      font-family: var(--font-luxury);
+      font-size: 0.95rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-decoration: none;
       margin-top: 0.05rem;
     }
 
     .person-role {
-      font-size: 0.52rem;
+      font-family: var(--font-luxury);
+      font-size: 0.5rem;
       letter-spacing: 0.22em;
       color: #94a3b8;
       text-transform: uppercase;
@@ -278,15 +282,16 @@
     }
 
     .back-brand-title {
-      font-family: var(--font-serif);
-      font-size: 2.8rem;
+      font-family: var(--font-luxury);
+      font-size: 2.6rem;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       line-height: 1;
     }
 
     .back-brand-sub {
-      font-size: 0.7rem;
+      font-family: var(--font-luxury);
+      font-size: 0.65rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
       color: #94a3b8;
@@ -389,11 +394,11 @@
           <div class="contact-details-list">
             <a href="https://royalestatedevelopers.com" target="_blank" class="contact-row">
               <svg class="contact-icon gold-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="url(#goldGradient)" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" fill="none" stroke="url(#goldGradient)" stroke-width="2"/></svg>
-              <span class="foil-gold" style="-webkit-text-fill-color: initial; color: #f1f5f9; font-weight: 500;">royalestatedevelopers.com</span>
+              <span class="foil-gold" style="-webkit-text-fill-color: initial; color: #f1f5f9; font-weight: 500; font-family: var(--font-luxury); letter-spacing: 0.08em;">royalestatedevelopers.com</span>
             </a>
             <div class="contact-row">
               <svg class="contact-icon gold-svg" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" fill="none" stroke="url(#goldGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" fill="none" stroke="url(#goldGradient)" stroke-width="2"/></svg>
-              <span>173, Lower Ground Floor, Kapil Vihar, Pitampura, Delhi-110034</span>
+              <span style="font-family: var(--font-luxury); letter-spacing: 0.06em; font-size: 0.72rem;">173, Lower Ground Floor, Kapil Vihar, Pitampura, Delhi-110034</span>
             </div>
           </div>
         </div>
@@ -438,7 +443,7 @@
   </div>
 
   <script>
-    const LOGO_URL = 'https://i.pinimg.com/736x/77/e3/4e/77e34e3854d1338ffcba24bbbe1e44f0.jpg';
+    const LOGO_URL = 'https://i.pinimg.com/736x/64/fa/1b/64fa1bd6848c8477903cf522f370ff71.jpg';
     let corsSafeLogoBase64 = null;
 
     window.addEventListener('load', () => {
