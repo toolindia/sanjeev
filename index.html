@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="no-referrer" />
-  <title>Sanjeev Dabla | Royal Estate Developers</title>
+  <title>Rahul Sharma | Royal Estate Developers</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Libraries for image and PDF generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -16,13 +16,17 @@
 
   <style>
     :root {
-      --bg-dark: #070d18;
-      --card-navy-1: #0f1c2e;
-      --card-navy-2: #09111c;
-      --gold-primary: #d4af37;
-      --gold-light: #f6e8b1;
-      --gold-gradient: linear-gradient(135deg, #c59b27 0%, #fef3bd 45%, #b38728 75%, #fae69e 100%);
-      --border-gold: rgba(212, 175, 55, 0.35);
+      /* Matte Black Brushed Metallic Texture Background */
+      --bg-dark: #0f1115;
+      --card-bg-1: #16191f;
+      --card-bg-2: #0b0d11;
+      
+      /* Raised Foiled Gold Gradient & Effects */
+      --gold-foil: linear-gradient(135deg, #dfbc55 0%, #fff1b0 30%, #c99e2e 50%, #fef3bd 70%, #b8860b 100%);
+      --gold-solid: #d4af37;
+      --gold-light: #f7e8b1;
+      --border-gold: rgba(212, 175, 55, 0.4);
+      
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-sans: 'Plus Jakarta Sans', sans-serif;
     }
@@ -48,15 +52,19 @@
     .cards-deck {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.5rem;
       align-items: center;
       padding: 1.5rem;
     }
 
+    /* Standard Business Card Dimensions Ratio (90mm x 55mm approx scaled) */
     .card {
-      width: 520px;
-      height: 295px;
-      background: linear-gradient(145deg, var(--card-navy-1), var(--card-navy-2));
+      width: 540px;
+      height: 310px;
+      background: linear-gradient(145deg, var(--card-bg-1), var(--card-bg-2));
+      /* Subtle brushed horizontal texture simulation */
+      background-image: linear-gradient(145deg, var(--card-bg-1), var(--card-bg-2)), 
+                        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.25) 3px, rgba(0, 0, 0, 0.25) 4px);
       border: 1.5px solid var(--border-gold);
       border-radius: 12px;
       position: relative;
@@ -65,184 +73,181 @@
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(0, 0, 0, 0.6);
     }
 
-    .card::before {
-      content: '';
-      position: absolute;
-      inset: 8px;
-      border: 1px solid rgba(212, 175, 55, 0.16);
-      border-radius: 8px;
-      pointer-events: none;
-    }
-
-    .card-top-line {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--gold-gradient);
-    }
-
-    .front-header {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .brand-group {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-    }
-
-    .brand-logo {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 1px solid var(--border-gold);
-      object-fit: cover;
-      background-color: #0b1320;
-    }
-
-    .brand-title {
-      font-family: var(--font-serif);
-      font-size: 1.55rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      background: var(--gold-gradient);
+    /* Foiled / Embossed Text Utility */
+    .foil-gold {
+      background: var(--gold-foil);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.8));
+    }
+
+    /* FRONT SIDE LAYOUT (Matching Image 1) */
+    .card-front {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .front-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding-right: 0.5rem;
+    }
+
+    .company-header-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .brand-title-main {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       line-height: 1.1;
     }
 
-    .brand-subtitle {
-      font-size: 0.58rem;
-      letter-spacing: 0.26em;
+    .brand-subtitle-main {
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: #94a3b8;
+      color: #b0bac5;
     }
 
-    .front-body {
-      position: relative;
-      z-index: 2;
+    .services-tag {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin: 0.4rem 0;
+    }
+
+    .contact-details-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.76rem;
+      color: #e2e8f0;
+      letter-spacing: 0.02em;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: #e2e8f0;
+    }
+
+    .contact-row span {
+      line-height: 1.25;
+    }
+
+    .front-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      border-left: 1px solid rgba(212, 175, 55, 0.2);
+      padding-left: 1.5rem;
+      text-align: center;
+    }
+
+    .crest-logo {
+      width: 55px;
+      height: 55px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+    }
+
+    .person-info-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
     }
 
     .person-name {
       font-family: var(--font-serif);
-      font-size: 1.9rem;
+      font-size: 1.25rem;
       font-weight: 700;
-      color: #ffffff;
-      letter-spacing: 0.04em;
-      line-height: 1.15;
+      letter-spacing: 0.05em;
     }
 
-    .person-role {
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold-primary);
-      margin-top: 0.25rem;
+    .person-phone {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
       font-weight: 600;
-    }
-
-    .front-footer {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.6rem 1.2rem;
-      position: relative;
-      z-index: 2;
-      padding-top: 0.8rem;
-      border-top: 1px solid rgba(212, 175, 55, 0.14);
-    }
-
-    .contact-block {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .cb-label {
-      font-size: 0.52rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #94a3b8;
-      font-weight: 600;
-    }
-
-    .cb-value {
-      font-size: 0.82rem;
-      color: #f1f5f9;
+      letter-spacing: 0.05em;
       text-decoration: none;
-      font-weight: 500;
-      margin-top: 0.1rem;
     }
 
+
+    /* BACK SIDE LAYOUT (Matching Image 2 - Turning Dreams Into Reality) */
     .card-back {
       align-items: center;
       justify-content: center;
       text-align: center;
+      position: relative;
     }
 
-    .back-logo {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      border: 1.5px solid var(--border-gold);
-      object-fit: cover;
-      margin-bottom: 0.8rem;
-      background-color: #0b1320;
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+    .back-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .crest-logo-large {
+      width: 75px;
+      height: 75px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.8));
     }
 
     .back-brand-title {
       font-family: var(--font-serif);
-      font-size: 2.1rem;
+      font-size: 2.3rem;
       font-weight: 700;
-      letter-spacing: 0.14em;
-      background: var(--gold-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1.1;
+      letter-spacing: 0.16em;
+      line-height: 1;
     }
 
     .back-brand-sub {
       font-size: 0.65rem;
-      letter-spacing: 0.32em;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
       color: #94a3b8;
-      margin-top: 0.35rem;
+      margin-top: -0.4rem;
     }
 
-    .verticals-tag {
-      margin-top: 1.1rem;
-      font-size: 0.64rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      border: 1px solid var(--border-gold);
-      padding: 0.35rem 1.1rem;
-      border-radius: 50px;
-      background: rgba(0, 0, 0, 0.35);
+    /* Script Tagline matching card 2 */
+    .tagline-script {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-top: 0.5rem;
     }
 
-    .back-url {
-      position: absolute;
-      bottom: 18px;
-      font-size: 0.76rem;
-      letter-spacing: 0.16em;
-      color: #94a3b8;
-    }
 
+    /* Action buttons bar */
     .action-bar {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 1.2rem;
+      margin-top: 1.5rem;
     }
 
     .btn {
@@ -271,13 +276,9 @@
     }
 
     .btn-download {
-      background: var(--gold-gradient);
+      background: var(--gold-foil);
       color: #080d16;
       box-shadow: 0 10px 25px rgba(212, 175, 55, 0.25);
-    }
-
-    .btn-download:hover {
-      box-shadow: 0 14px 30px rgba(212, 175, 55, 0.4);
     }
 
     .btn-share {
@@ -286,29 +287,21 @@
       border: 1px solid var(--border-gold);
     }
 
-    .btn-share:hover {
-      background: rgba(212, 175, 55, 0.12);
-      border-color: var(--gold-primary);
-    }
-
     @media (max-width: 580px) {
       .card {
-        width: 340px;
-        height: 200px;
-        padding: 1.2rem;
+        width: 350px;
+        height: 210px;
+        padding: 1rem;
       }
-      .brand-logo { width: 36px; height: 36px; }
-      .brand-title { font-size: 1.15rem; }
-      .brand-subtitle { font-size: 0.45rem; }
-      .person-name { font-size: 1.25rem; }
-      .person-role { font-size: 0.52rem; }
-      .cb-label { font-size: 0.42rem; }
-      .cb-value { font-size: 0.65rem; }
-      .back-logo { width: 50px; height: 50px; }
-      .back-brand-title { font-size: 1.45rem; }
-      .back-brand-sub { font-size: 0.5rem; }
-      .verticals-tag { font-size: 0.5rem; padding: 0.2rem 0.7rem; }
-      .back-url { font-size: 0.62rem; bottom: 12px; }
+      .brand-title-main { font-size: 1.15rem; }
+      .services-tag { font-size: 0.8rem; }
+      .contact-details-list { font-size: 0.58rem; }
+      .crest-logo { width: 38px; height: 38px; }
+      .person-name { font-size: 0.9rem; }
+      .person-phone { font-size: 0.72rem; }
+      .crest-logo-large { width: 50px; height: 50px; }
+      .back-brand-title { font-size: 1.5rem; }
+      .tagline-script { font-size: 1.25rem; }
       .btn { width: 100%; justify-content: center; }
     }
   </style>
@@ -317,55 +310,50 @@
 
   <div class="cards-deck" id="cardDeckSheet">
     
-    <!-- FRONT SIDE -->
+    <!-- FRONT SIDE (Matching Image 1 layout & details) -->
     <div class="card" id="cardFront">
-      <div class="card-top-line"></div>
-      
-      <div class="front-header">
-        <div class="brand-group">
-          <img alt="Royal Estate Developers Logo" class="brand-logo cors-safe-logo" />
-          <div>
-            <div class="brand-title">ROYAL ESTATE</div>
-            <div class="brand-subtitle">DEVELOPERS</div>
+      <div class="front-left">
+        <div class="company-header-group">
+          <div class="brand-title-main foil-gold">ROYAL ESTATE</div>
+          <div class="brand-subtitle-main">DEVELOPERS</div>
+        </div>
+
+        <div class="services-tag foil-gold">ARCHITECT & BUILDERS</div>
+        <div style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; color: #d4af37; text-transform: uppercase;">SALE / PURCHASE / COLLABORATION</div>
+
+        <div class="contact-details-list">
+          <a href="tel:01131551755" class="contact-row">
+            <span>📞</span> <span>011-31551755, 7043987634</span>
+          </a>
+          <a href="mailto:royalestatedevelopers@outlook.com" class="contact-row">
+            <span>✉️</span> <span>royalestatedevelopers@outlook.com</span>
+          </a>
+          <div class="contact-row">
+            <span>📍</span> <span>173, Lower Ground Floor, Kapil Vihar, Pitampura, Delhi-110034</span>
           </div>
         </div>
       </div>
 
-      <div class="front-body">
-        <div class="person-name">Sanjeev Dabla</div>
-        <div class="person-role">Real Estate Consultant &amp; Developer</div>
-      </div>
-
-      <div class="front-footer">
-        <div class="contact-block">
-          <span class="cb-label">Contact / WhatsApp</span>
-          <a href="tel:+919818075525" class="cb-value">+91 98180 75525</a>
+      <div class="front-right">
+        <img src="" alt="Crest Logo" class="crest-logo cors-safe-logo" />
+        <div class="person-info-block">
+          <div class="person-name foil-gold">Rahul Sharma</div>
+          <a href="tel:+919818622267" class="person-phone foil-gold">9818622267</a>
         </div>
-        <div class="contact-block">
-          <span class="cb-label">Corporate Email</span>
-          <a href="mailto:sanjeev@royalestatedevelopers.com" class="cb-value">sanjeev@royalestatedevelopers.com</a>
-        </div>
-        <div class="contact-block">
-          <span class="cb-label">Official Portal</span>
-          <a href="https://royalestatedevelopers.com" target="_blank" class="cb-value">royalestatedevelopers.com</a>
-        </div>
-        <div class="contact-block">
-          <span class="cb-label">Expertise</span>
-          <span class="cb-value">Residential &bull; Commercial &bull; Land</span>
-        </div>
+        <div style="font-size: 0.48rem; letter-spacing: 0.15em; color: #94a3b8; text-transform: uppercase;">Consultant</div>
       </div>
     </div>
 
-    <!-- BACK SIDE -->
+    <!-- BACK SIDE (Matching Image 2 layout & tagline) -->
     <div class="card card-back" id="cardBack">
-      <div class="card-top-line"></div>
-
-      <img alt="Royal Estate Developers Logo" class="back-logo cors-safe-logo" />
-      <div class="back-brand-title">ROYAL ESTATE</div>
-      <div class="back-brand-sub">DEVELOPERS</div>
-      <div class="verticals-tag">Residential &bull; Commercial &bull; Luxury Living</div>
-
-      <div class="back-url">www.royalestatedevelopers.com</div>
+      <div class="back-content">
+        <img src="" alt="Crest Logo" class="crest-logo-large cors-safe-logo" />
+        <div>
+          <div class="back-brand-title foil-gold">ROYAL ESTATE</div>
+          <div class="back-brand-sub">DEVELOPERS</div>
+        </div>
+        <div class="tagline-script foil-gold">Turning Dreams Into Reality</div>
+      </div>
     </div>
 
   </div>
@@ -383,10 +371,10 @@
   </div>
 
   <script>
+    // Using the exact crest logo URL from your previous configuration
     const LOGO_URL = 'https://i.pinimg.com/736x/64/fa/1b/64fa1bd6848c8477903cf522f370ff71.jpg';
     let corsSafeLogoBase64 = null;
 
-    // Load logo as Base64 on start to bypass CORS during export
     window.addEventListener('load', () => {
       convertImgToBase64(LOGO_URL, (base64) => {
         corsSafeLogoBase64 = base64;
@@ -408,7 +396,6 @@
         ctx.drawImage(this, 0, 0);
         callback(canvas.toDataURL('image/png'));
       };
-      // Use proxy fallback if direct load fails
       img.onerror = function() {
         img.src = 'https://images.weserv.nl/?url=' + encodeURIComponent(url);
       }
@@ -422,9 +409,9 @@
         return null;
       }
       return await html2canvas(sheet, {
-        scale: 3, // Print resolution
+        scale: 3,
         useCORS: true,
-        backgroundColor: '#070d18',
+        backgroundColor: '#0f1115',
         logging: false
       });
     }
@@ -442,13 +429,11 @@
       const btn = document.querySelector('.btn-download');
       const originalHTML = btn.innerHTML;
       btn.innerText = 'Generating Image...';
-      btn.style.opacity = '0.7';
-
       try {
         const canvas = await generateCanvasSheet();
         if (!canvas) return;
         const link = document.createElement('a');
-        link.download = 'RoyalEstate_Card_Sanjeev_Dabla.png';
+        link.download = 'Royal_Estate_Card_Rahul_Sharma.png';
         link.href = canvas.toDataURL('image/png');
         document.body.appendChild(link);
         link.click();
@@ -458,7 +443,6 @@
         alert('Could not export image.');
       } finally {
         btn.innerHTML = originalHTML;
-        btn.style.opacity = '1';
       }
     }
 
@@ -466,49 +450,30 @@
       const btn = document.querySelector('.btn-download');
       const originalHTML = btn.innerHTML;
       btn.innerText = 'Generating PDF...';
-      btn.style.opacity = '0.7';
-
       try {
         const canvas = await generateCanvasSheet();
         if (!canvas) return;
         const imgData = canvas.toDataURL('image/png');
         
         const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF({
-          orientation: 'portrait',
-          unit: 'mm',
-          format: 'a4'
-        });
-
+        const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
         const pageWidth = pdf.internal.pageSize.getWidth();
-        const pageHeight = pdf.internal.pageSize.getHeight();
         const imgWidth = canvas.width;
         const imgHeight = canvas.height;
-        
-        // Ratio to fit A4 width with margins
         const ratio = (pageWidth - 20) / imgWidth; 
-        const finalWidth = imgWidth * ratio;
-        const finalHeight = imgHeight * ratio;
-
-        pdf.addImage(imgData, 'PNG', 10, 10, finalWidth, finalHeight);
-        pdf.save('RoyalEstate_Card_Sanjeev_Dabla.pdf');
+        
+        pdf.addImage(imgData, 'PNG', 10, 10, imgWidth * ratio, imgHeight * ratio);
+        pdf.save('Royal_Estate_Card_Rahul_Sharma.pdf');
       } catch (err) {
         console.error(err);
         alert('Could not export PDF.');
       } finally {
         btn.innerHTML = originalHTML;
-        btn.style.opacity = '1';
       }
     }
 
     async function shareCard() {
-      const btn = document.querySelector('.btn-share');
-      const originalHTML = btn.innerHTML;
-      btn.innerText = 'Preparing...';
-      btn.style.opacity = '0.7';
-
-      const shareText = "Sanjeev Dabla | Real Estate Consultant & Developer\nRoyal Estate Developers\nPhone: +91 98180 75525\nEmail: sanjeev@royalestatedevelopers.com\nWebsite: https://royalestatedevelopers.com";
-      
+      const shareText = "Rahul Sharma | Architect & Builders\nRoyal Estate Developers\nPhone: +91 9818622267\nAddress: 173, Lower Ground Floor, Kapil Vihar, Pitampura, Delhi-110034";
       try {
         const canvas = await generateCanvasSheet();
         if (!canvas) return;
@@ -516,33 +481,15 @@
         const file = new File([blob], 'RoyalEstate_Card.png', { type: 'image/png' });
 
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
-          await navigator.share({
-            files: [file],
-            title: 'Sanjeev Dabla - Royal Estate Developers',
-            text: shareText
-          });
+          await navigator.share({ files: [file], title: 'Rahul Sharma - Royal Estate Developers', text: shareText });
         } else {
-          if (navigator.share) {
-             await navigator.share({
-               title: 'Sanjeev Dabla - Royal Estate Developers',
-               text: shareText,
-               url: window.location.href
-             });
-          } else {
-            alert("Web Share not supported on this browser. Text copied to clipboard.");
-            navigator.clipboard.writeText(shareText);
-          }
+          navigator.clipboard.writeText(shareText);
+          alert("Card details copied to clipboard!");
         }
       } catch (err) {
-        if (err.name !== 'AbortError') {
-          console.error(err);
-        }
-      } finally {
-        btn.innerHTML = originalHTML;
-        btn.style.opacity = '1';
+        if (err.name !== 'AbortError') console.error(err);
       }
     }
   </script>
-
 </body>
 </html>
